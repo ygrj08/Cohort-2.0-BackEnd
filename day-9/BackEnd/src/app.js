@@ -2,11 +2,13 @@
 
 const express = require("express")
 const noteModel = require("./models/note.model")
+const cors = require("cors")
 
 
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 
 
 // POST/api/notes
@@ -61,9 +63,9 @@ app.delete('/api/notes/:id', async (req, res)=>{
 app.patch('/api/notes/:id', async (req,res)=>{
     const id = req.params.id
 
-    const {title}= req.body
+    const {description}= req.body
 
-    await noteModel.findByIdAndUpdate(id, {title})
+    await noteModel.findByIdAndUpdate(id, {description})
 
     res.status(200).json({
         message: "Note updated successfully",
