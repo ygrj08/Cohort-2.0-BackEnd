@@ -43,6 +43,12 @@ function App() {
   function handleSubmit(e) {
     e.preventDefault()
 
+    // Trim removes extra spaces
+    if (title.trim() === "" || description.trim() === "") {
+      alert("Please fill all fields")
+      return
+    }
+
     if (editId) {
       // UPDATE MODE
       axios.patch(`http://localhost:3000/api/notes/${editId}`, {
@@ -77,7 +83,7 @@ function App() {
       })
 
 
-// EDIT BUTTON CLICK
+    // EDIT BUTTON CLICK
   }
 
   function handleEdit(note) {
