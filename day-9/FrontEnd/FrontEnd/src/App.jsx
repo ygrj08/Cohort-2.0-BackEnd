@@ -9,7 +9,7 @@ function App() {
   const [editId, setEditId] = useState(null)
 
   function fetchNotes() {
-    axios.get("http://localhost:3000/api/notes")
+    axios.get("https://cohort-2-0-backend-o8ua.onrender.com/api/notes")
       .then((res) => {
         setNotes(res.data.notes)
       })
@@ -51,7 +51,7 @@ function App() {
 
     if (editId) {
       // UPDATE MODE
-      axios.patch(`http://localhost:3000/api/notes/${editId}`, {
+      axios.patch(`https://cohort-2-0-backend-o8ua.onrender.com/api/notes/${editId}`, {
         title,
         description
       })
@@ -63,7 +63,7 @@ function App() {
         })
     } else {
       // CREATE MODE
-      axios.post("http://localhost:3000/api/notes", {
+      axios.post("https://cohort-2-0-backend-o8ua.onrender.com/api/notes", {
         title,
         description
       })
@@ -76,7 +76,7 @@ function App() {
   }
 
   function handleDeleteNote(noteId) {
-    axios.delete("http://localhost:3000/api/notes/" + noteId)
+    axios.delete("https://cohort-2-0-backend-o8ua.onrender.com/api/notes/" + noteId)
       .then(res => {
         console.log(res.data)
         fetchNotes()
